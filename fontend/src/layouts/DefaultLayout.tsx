@@ -11,7 +11,7 @@ const DefaultLayout: React.FC = ({ children }: iProps): JSX.Element => {
 		<>
 			<header>
 				<div className='sticky top-0'>
-					<div className='w-full bg-slate-300 h-[8vh] flex justify-center items-center '>
+					<div className='w-full px-4 sm-px-0 bg-slate-300 h-[8vh] flex justify-center items-center '>
 						<div className='container flex  items-center'>
 							<Header />
 						</div>

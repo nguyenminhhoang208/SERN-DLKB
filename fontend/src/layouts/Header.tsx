@@ -14,6 +14,11 @@ const Header: React.FC = (): JSX.Element => {
 					<h1>Login</h1>
 				</div>
 			</Link>
+			<Link to='/register'>
+				<div className='mr-4'>
+					<h1>Register</h1>
+				</div>
+			</Link>
 		</>
 	);
 };
