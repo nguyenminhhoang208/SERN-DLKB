@@ -1,5 +1,5 @@
 import { findUserByEmail } from '../../helpers/findUser';
-import { BAD_REQUEST, NOTFOUND } from '../../utils/response.utils';
+import { BAD_REQUEST, NOTFOUND, OK } from '../../utils/response.utils';
 import { comparePassword, genarateTokens } from '../auth.services';
 
 interface iData {

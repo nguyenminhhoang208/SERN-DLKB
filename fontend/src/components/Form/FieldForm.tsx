@@ -163,7 +163,11 @@ const FieldForm: React.FC<iFieldForm> = ({
 					err === 'success' ? 'text-green-500' : 'text-red-500'
 				}  text-xs px-1 pt-2 py-1`}
 			>
-				{err === 'success' ? 'Perfect!' : err}
+				{err === 'success'
+					? 'Validate: Perfect!'
+					: err
+					? 'Validate: ' + err
+					: err}
 			</p>
 		</div>
 	);

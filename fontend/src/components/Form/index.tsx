@@ -4,21 +4,29 @@ import FieldForm, { iFieldForm } from './FieldForm';
 interface iForm {
 	nameForm: string;
 	fields: iFieldForm[];
+	message: string;
+	submit: Function;
 	authen?: boolean;
 }
 
-const Form = ({ nameForm, fields, authen = false }: iForm): JSX.Element => {
+const Form = ({
+	nameForm,
+	fields,
+	message,
+	submit,
+	authen = false,
+}: iForm): JSX.Element => {
 	const [dataForm, setDataForm] = useState<any>({});
-	const handleSubmit = (event: React.FormEvent): void => {
-		event.preventDefault();
-		console.log('>>> check dataForm', dataForm);
-	};
+	// const handleSubmit = (event: React.FormEvent): void => {
+	// 	event.preventDefault();
+	// 	console.log('>>> check dataForm', dataForm);
+	// };
 	return (
 		<div className='flex justify-center items-center'>
 			<form
 				method='POST'
 				onSubmit={(e) => {
-					handleSubmit(e);
+					submit(e, dataForm);
 				}}
 				className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[95%] sm:max-w-max '
 			>
@@ -47,6 +55,7 @@ const Form = ({ nameForm, fields, authen = false }: iForm): JSX.Element => {
 						);
 					})}
 				</div>
+				<h1>{message}</h1>
 
 				<div className='flex items-center justify-between mt-2'>
 					<button

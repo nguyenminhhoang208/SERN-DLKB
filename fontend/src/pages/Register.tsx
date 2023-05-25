@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Form from '../components/Form';
 
 const Register: React.FC = (): JSX.Element => {
+	const [message, setMessage] = useState<string>('');
+
+	const handleSubmit = async (e: React.FormEvent, data: any) => {
+		e.preventDefault();
+		console.log(data);
+	};
 	return (
 		<Form
 			nameForm='Register'
@@ -50,6 +56,8 @@ const Register: React.FC = (): JSX.Element => {
 				},
 			]}
 			authen
+			message={message}
+			submit={handleSubmit}
 		/>
 	);
 };

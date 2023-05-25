@@ -3,10 +3,12 @@ import compression from 'compression';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+const cors = require('cors');
 
 const appConfig = (app: express.Application) => {
 	// config
 	dotenv.config();
+	app.use(cors());
 
 	app.use(morgan('dev')); // log request
 	app.use(compression()); // giảm kích thước giữ liệu gửi đi
