@@ -17,14 +17,16 @@ const genarateTokens = async (data: iData) => {
 	const keys: iKeys = await genarateKeys();
 	const { publicKey, privateKey } = keys;
 
-	const accessToken = jwt.sign(data, privateKey, {
+	const accessToken = await jwt.sign(data, privateKey, {
 		algorithm: 'RS256',
 		expiresIn: '1h',
 	});
-	const refreshToken = jwt.sign(data, privateKey, {
+	const refreshToken = await jwt.sign(data, privateKey, {
 		algorithm: 'RS256',
 		expiresIn: '365d',
 	});
+
+	const dataAT = await jwt.verify(accessToken, publicKey);
 
 	return {
 		publicKey,

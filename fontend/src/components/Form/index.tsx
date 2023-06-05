@@ -55,7 +55,7 @@ const Form = ({
 						);
 					})}
 				</div>
-				<h1>{message}</h1>
+				<h1 className='text-md text-red-600'>{message}</h1>
 
 				<div className='flex items-center justify-between mt-2'>
 					<button

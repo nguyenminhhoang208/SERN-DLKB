@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
-import Form from '../components/Form';
+import Form from '../../components/Form';
+import myAxios from '../../utils/myAxios';
+import { useNavigate } from 'react-router-dom';
 
 const Register: React.FC = (): JSX.Element => {
+	const navigate = useNavigate();
 	const [message, setMessage] = useState<string>('');
 
 	const handleSubmit = async (e: React.FormEvent, data: any) => {
-		e.preventDefault();
-		console.log(data);
+		try {
+			e.preventDefault();
+			await myAxios.post('/register', data);
+			navigate('/login');
+		} catch (error: any) {
+			setMessage(error.response.data.message);
+		}
 	};
 	return (
 		<Form
@@ -51,7 +59,7 @@ const Register: React.FC = (): JSX.Element => {
 					],
 				},
 				{
-					name: 'phoneNumber',
+					name: 'phonenumber',
 					type: 'text',
 				},
 			]}

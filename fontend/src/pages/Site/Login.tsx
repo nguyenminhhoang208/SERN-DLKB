@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Form from '../components/Form';
-import myAxios from '../utils/myAxios';
+import Form from '../../components/Form';
+import myAxios from '../../utils/myAxios';
 import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = (): JSX.Element => {
@@ -10,6 +10,7 @@ const Login: React.FC = (): JSX.Element => {
 		try {
 			e.preventDefault();
 			const res: any = await myAxios.post('/login', data);
+			console.log(res);
 			navigate('/');
 			// console.log(res);
 		} catch (error: any) {

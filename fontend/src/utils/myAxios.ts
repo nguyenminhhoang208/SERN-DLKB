@@ -1,14 +1,24 @@
 import axios from 'axios';
 // import config from './config';
 
-const instance = axios.create({
+const myAxios = axios.create({
 	baseURL: process.env.REACT_APP_BACKEND_URL,
 	// withCredentials: true
 });
 
-instance.interceptors.response.use((response) => {
+myAxios.interceptors.response.use((response) => {
 	const { data } = response;
 	return data;
 });
 
-export default instance;
+export interface iRes {
+	message: string;
+
+	metadata: object[];
+
+	reasonPhraseMessage: string;
+
+	status: number;
+}
+
+export default myAxios;

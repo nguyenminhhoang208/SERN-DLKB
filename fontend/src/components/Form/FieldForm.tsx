@@ -51,7 +51,7 @@ const FieldForm: React.FC<iFieldForm> = ({
 
 		// check password's length
 		if (type === 'password' && data.length < 6) {
-			return setErr('Passwords must be at least 6 characters!');
+			return setErr('Password must be at least 6 characters!');
 		}
 		// check email
 		if (

@@ -3,6 +3,8 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Loading from './pages/Loading';
 import { iRoute, publicRoutes } from './routes';
+import DefaultLayout from './layouts/Site/DefaultLayout';
+import { NotFound } from './pages/Site';
 
 const App: React.FC = (): JSX.Element => {
 	return (
@@ -25,6 +27,14 @@ const App: React.FC = (): JSX.Element => {
 								/>
 							);
 						})}
+						<Route
+							path='*'
+							element={
+								<DefaultLayout>
+									<NotFound />
+								</DefaultLayout>
+							}
+						/>
 					</Routes>
 				</Router>
 			</Suspense>

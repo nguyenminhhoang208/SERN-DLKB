@@ -4,9 +4,9 @@ import usersRoutes from './users.routes';
 
 const routes = (app: express.Application): void => {
 	// [USE] /users
-	app.use('/users', usersRoutes);
+	app.use('/api/v1/users', usersRoutes);
 	// [USE] /
-	app.use('/', siteRoutes);
+	app.use('/api/v1/', siteRoutes);
 
 	// Handle 404 Not Found!
 	app.use(

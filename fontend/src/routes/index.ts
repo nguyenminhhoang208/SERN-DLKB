@@ -1,10 +1,13 @@
 import React from 'react';
-import DefaultLayout from '../layouts/DefaultLayout';
-import NoFooterLayout from '../layouts/NoFooterLayout';
+import DefaultLayout from '../layouts/Site/DefaultLayout';
+import NoFooterLayout from '../layouts/Site/NoFooterLayout';
+import AdminLayout from '../layouts/System/AdminLayout';
+// import AllUsers from '../pages/System/AllUsers';
 
-const Login = React.lazy(() => import('../pages/Login'));
-const Register = React.lazy(() => import('../pages/Register'));
-const Home = React.lazy(() => import('../pages/Home'));
+const Login = React.lazy(() => import('../pages/Site/Login'));
+const Register = React.lazy(() => import('../pages/Site/Register'));
+const Home = React.lazy(() => import('../pages/Site/Home'));
+const AllUsers = React.lazy(() => import('../pages/System/AllUsers'));
 
 export interface iRoute {
 	path: string;
@@ -27,6 +30,11 @@ export const publicRoutes: iRoute[] = [
 		path: '/register',
 		component: Register,
 		layout: NoFooterLayout,
+	},
+	{
+		path: '/system/all-users',
+		component: AllUsers,
+		layout: AdminLayout,
 	},
 ];
 
