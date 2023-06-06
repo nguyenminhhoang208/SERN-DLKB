@@ -1,13 +1,19 @@
 import React from 'react';
 
-const Login = React.lazy(() => import('../pages/components/Site/Login'));
-const Register = React.lazy(() => import('../pages/components/Site/Register'));
-const Home = React.lazy(() => import('../pages/components/Site/Home'));
+const Login = React.lazy(
+	() => import('../features/site.features/pages/components/Site/Login')
+);
+const Register = React.lazy(
+	() => import('../features/site.features/pages/components/Site/Register')
+);
+const Home = React.lazy(
+	() => import('../features/site.features/pages/components/Site/Home')
+);
 const AllUsers = React.lazy(
-	() => import('../../system.features/pages/AllUsers')
+	() => import('../features/system.features/pages/AllUsers')
 );
 const UpdateUser = React.lazy(
-	() => import('../../system.features/pages/UpdateUser')
+	() => import('../features/system.features/pages/UpdateUser')
 );
 
 export interface iRoute {

@@ -1,7 +1,7 @@
 import './App.css';
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { iRoute, publicRoutes } from './features/site.features/routes';
+import { iRoute, publicRoutes } from './routes';
 import DefaultLayout from './features/site.features/layouts/DefaultLayout';
 import { NotFound } from './features/site.features/pages/components/Site';
 import Loading from './features/site.features/pages/components/Loading';
