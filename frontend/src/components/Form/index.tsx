@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import FieldForm, { iFieldForm } from './FieldForm';
+import { iUser } from '../../features/system.features/components/TableUsers';
 
 interface iForm {
 	nameForm: string;
 	fields: iFieldForm[];
 	message: string;
 	submit: Function;
+	initialValue?: any;
 	authen?: boolean;
 }
 
@@ -14,13 +16,11 @@ const Form = ({
 	fields,
 	message,
 	submit,
+	initialValue = {},
 	authen = false,
 }: iForm): JSX.Element => {
 	const [dataForm, setDataForm] = useState<any>({});
-	// const handleSubmit = (event: React.FormEvent): void => {
-	// 	event.preventDefault();
-	// 	console.log('>>> check dataForm', dataForm);
-	// };
+
 	return (
 		<div className='flex justify-center items-center'>
 			<form
@@ -33,7 +33,7 @@ const Form = ({
 				<div className='text-center font-bold text-xl mb-[5vh]'>
 					<h1>{nameForm}</h1>
 				</div>
-				{/* <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-x-6'> */}
+
 				<div
 					className={
 						fields.length < 3
@@ -41,10 +41,10 @@ const Form = ({
 							: 'grid md:grid-cols-2 lg:grid-cols-3 gap-x-6'
 					}
 				>
-					{/* <div className='grid  gap-x-6  grid-flow-col auto-cols-max'> */}
 					{fields.map((field: iFieldForm): JSX.Element => {
 						return (
 							<FieldForm
+								data={initialValue[field.name] ? initialValue[field.name] : ''}
 								key={field.name}
 								name={field.name}
 								type={field.type}
@@ -67,7 +67,7 @@ const Form = ({
 					{authen ? (
 						<a
 							className='inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800'
-							href='#'
+							href='/'
 						>
 							Forgot Password?
 						</a>

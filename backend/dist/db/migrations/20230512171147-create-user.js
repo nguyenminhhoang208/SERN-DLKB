@@ -39,7 +39,7 @@ exports.default = {
                 // 0 - male
                 // 1 - female
                 gender: {
-                    type: Sequelize.BOOLEAN,
+                    type: Sequelize.STRING,
                 },
                 roleId: {
                     type: Sequelize.STRING,

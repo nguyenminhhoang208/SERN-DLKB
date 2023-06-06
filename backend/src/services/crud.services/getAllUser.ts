@@ -7,8 +7,9 @@ const getAllUserService = async (): Promise<any> => {
 			'firstName',
 			'lastName',
 			'email',
-			'phonenumber',
+			'phoneNumber',
 			'andress',
+			'gender',
 		],
 	});
 	return allUser;

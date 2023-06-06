@@ -33,7 +33,7 @@ const loginService = async (data: iData) => {
 		firstName: user.firstName,
 		lastName: user.lastName,
 		roleId: user.roleId,
-		phonenumber: user.phonenumber,
+		phoneNumber: user.phoneNumber,
 	};
 
 	const tokens = await genarateTokens(newData);

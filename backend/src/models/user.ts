@@ -6,11 +6,11 @@ export type Tuser = {
 	firstName: string;
 	lastName: string;
 	address: string;
-	gender: boolean;
+	gender: string;
 	image: string;
 	roleId: string;
 	positionId: string;
-	phonenumber: string;
+	phoneNumber: string;
 };
 
 module.exports = (sequelize: Sequelize, DataTypes: any): object => {
@@ -31,7 +31,7 @@ module.exports = (sequelize: Sequelize, DataTypes: any): object => {
 			firstName: DataTypes.STRING,
 			lastName: DataTypes.STRING,
 			andress: DataTypes.STRING,
-			gender: DataTypes.BOOLEAN,
+			gender: DataTypes.STRING,
 			image: DataTypes.STRING,
 			roleId: DataTypes.STRING,
 			positionId: DataTypes.STRING,

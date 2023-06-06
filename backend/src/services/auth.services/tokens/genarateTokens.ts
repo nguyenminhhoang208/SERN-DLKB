@@ -5,7 +5,7 @@ interface iData {
 	email: string;
 	firstName: string;
 	lastName: string;
-	phonenumber: string;
+	phoneNumber: string;
 	roleId: string;
 }
 interface iKeys {

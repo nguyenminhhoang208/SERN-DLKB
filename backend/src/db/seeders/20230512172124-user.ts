@@ -22,7 +22,7 @@ export default {
 					firstName: 'Nguyen',
 					lastName: 'Rin',
 					address: 'HCM',
-					gender: 1,
+					gender: 'Male',
 					typeRole: 'ROLE',
 					keyRole: 'R1',
 				},

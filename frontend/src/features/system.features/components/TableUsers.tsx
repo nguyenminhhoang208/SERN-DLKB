@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Loading from '../../site.features/pages/components/Loading';
 import RowUser from './RowUser';
 
@@ -7,8 +7,9 @@ export interface iUser {
 	firstName: string;
 	lastName: string;
 	email: string;
-	phonenumber: string;
+	phoneNumber: string;
 	andress: string;
+	gender: string;
 }
 
 export interface iTableUsersProps {
@@ -39,9 +40,11 @@ const TableUsers: React.FC<iTableUsersProps> = ({
 										#
 									</th>
 									{Object.keys(users[0])?.map((key) => {
+										let th = key.replace(/^\w/, (match) => match.toUpperCase());
+										th = th.replace(/[a-z](?=[A-Z])/g, (match) => match + ' ');
 										return (
 											<th key={key} scope='col' className='px-6 py-4'>
-												{key.replace(/^\w/, (match) => match.toUpperCase())}
+												{th}
 											</th>
 										);
 									})}

@@ -6,6 +6,7 @@ export interface iFieldForm {
 	selectOptions?: any;
 	dataForm?: any;
 	setDataForm?: any;
+	data?: any;
 }
 const FieldForm: React.FC<iFieldForm> = ({
 	name,
@@ -13,6 +14,7 @@ const FieldForm: React.FC<iFieldForm> = ({
 	dataForm,
 	selectOptions,
 	setDataForm,
+	data = '',
 }: iFieldForm): JSX.Element => {
 	// convert camelCase to Sentence case
 	let nameDisplay = name;
@@ -20,15 +22,13 @@ const FieldForm: React.FC<iFieldForm> = ({
 	while (lengthName >= 0) {
 		if (nameDisplay[lengthName] === nameDisplay[lengthName].toUpperCase()) {
 			nameDisplay =
-				nameDisplay.slice(0, lengthName) +
-				' ' +
-				nameDisplay.slice(lengthName).toLowerCase();
+				nameDisplay.slice(0, lengthName) + ' ' + nameDisplay.slice(lengthName);
 		}
 		--lengthName;
 	}
 
 	// Value from input element
-	const [value, setValue] = useState<string>('');
+	const [value, setValue] = useState<string>(data);
 
 	// Check if Input element has been focused first
 	const [touched, setTouched] = useState<number>(0);
@@ -41,29 +41,35 @@ const FieldForm: React.FC<iFieldForm> = ({
 
 	// Handle verify value
 	const handleValue = (data: string): any => {
+		const nameLC = nameDisplay.toLocaleLowerCase();
 		// Special characters
 		let format = /[!#@$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 
 		// Check if the user has entered data yet
 		if (!(data.length > 0)) {
-			return setErr('Enter your ' + nameDisplay + ' pls!');
+			return setErr('Enter your ' + nameLC + ' pls!');
 		}
 
 		// check password's length
 		if (type === 'password' && data.length < 6) {
 			return setErr('Password must be at least 6 characters!');
 		}
+		// check genner
+		if (name === 'gender' && data !== 'Female' && data !== 'Male') {
+			return setErr('Your ' + nameLC + ' is not valid!');
+		}
+
 		// check email
 		if (
 			(!(data.slice(-10) === '@gmail.com') && type === 'email') ||
 			(format.test(data) && type !== 'email')
 		) {
-			return setErr('Your ' + nameDisplay + ' is not valid!');
+			return setErr('Your ' + nameLC + ' is not valid!');
 		}
 
 		// check phone number
 		if (name === 'phoneNumber' && !data.match(/^[0-9]+$/)) {
-			return setErr('Your ' + nameDisplay + ' is not valid!');
+			return setErr('Your ' + nameLC + ' is not valid!');
 		}
 
 		// check re-password
@@ -76,6 +82,7 @@ const FieldForm: React.FC<iFieldForm> = ({
 		) {
 			return setErr('Re password incorrect!');
 		}
+
 		setDataForm(dataForm);
 
 		// verify success
@@ -91,7 +98,7 @@ const FieldForm: React.FC<iFieldForm> = ({
 				handleValue(value.trim());
 				// end verify
 				setChecking(false);
-			}, 1000);
+			}, 500);
 
 			// cleanup function
 			return () => {
@@ -111,6 +118,7 @@ const FieldForm: React.FC<iFieldForm> = ({
 			<div className=' relative'>
 				{type !== 'select' ? (
 					<input
+						value={value}
 						className={`shadow appearance-none border ${
 							touched
 								? err === 'success'
@@ -146,7 +154,11 @@ const FieldForm: React.FC<iFieldForm> = ({
 						} rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-blue-300  focus:outline-none focus:shadow-outline`}
 					>
 						{selectOptions.map((option: any) => {
-							return (
+							return option.value === data ? (
+								<option key={option.value} value={option.value} selected>
+									{option.key}
+								</option>
+							) : (
 								<option key={option.value} value={option.value}>
 									{option.key}
 								</option>

@@ -10,7 +10,11 @@ const Register: React.FC = (): JSX.Element => {
 	const handleSubmit = async (e: React.FormEvent, data: any) => {
 		try {
 			e.preventDefault();
+			if (!data.gender) {
+				data.gender = 'Male';
+			}
 			await myAxios.post('/register', data);
+			// console.log(data);
 			navigate('/login');
 		} catch (error: any) {
 			setMessage(error.response.data.message);
@@ -50,11 +54,11 @@ const Register: React.FC = (): JSX.Element => {
 					selectOptions: [
 						{
 							key: 'Male',
-							value: 0,
+							value: 'Male',
 						},
 						{
 							key: 'Female',
-							value: 1,
+							value: 'Female',
 						},
 					],
 				},
