@@ -1,10 +1,10 @@
 import './App.css';
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Loading from './pages/Loading';
-import { iRoute, publicRoutes } from './routes';
-import DefaultLayout from './layouts/Site/DefaultLayout';
-import { NotFound } from './pages/Site';
+import { iRoute, publicRoutes } from './features/site.features/routes';
+import DefaultLayout from './features/site.features/layouts/DefaultLayout';
+import { NotFound } from './features/site.features/pages/components/Site';
+import Loading from './features/site.features/pages/components/Loading';
 
 const App: React.FC = (): JSX.Element => {
 	return (

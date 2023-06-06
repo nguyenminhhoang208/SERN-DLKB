@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Form from '../../components/Form';
-import myAxios from '../../utils/myAxios';
 import { useNavigate } from 'react-router-dom';
+import myAxios from '../../../../../utils/myAxios';
+import Form from '../../../../../components/Form';
 
 const Register: React.FC = (): JSX.Element => {
 	const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../Header';
-import Footer from '../Footer';
-import AdminHeader from '../System/AdminHeader';
+import AdminHeader from '../../system.features/header/AdminHeader';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 interface iProps {
 	noFooter: boolean;

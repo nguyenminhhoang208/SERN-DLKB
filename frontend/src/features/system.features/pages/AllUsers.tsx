@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import myAxios, { iRes } from '../../utils/myAxios';
-import TableUsers from '../../features/system.features/components/TableUsers';
+import myAxios, { iRes } from '../../../utils/myAxios';
+import TableUsers from '../components/TableUsers';
 
 const AllUsers: React.FC = (): JSX.Element => {
 	const [users, setUsers] = useState([]);

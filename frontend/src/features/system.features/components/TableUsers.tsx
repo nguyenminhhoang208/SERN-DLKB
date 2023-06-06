@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Loading from '../../../pages/Loading';
+import Loading from '../../site.features/pages/components/Loading';
 import RowUser from './RowUser';
 
 export interface iUser {

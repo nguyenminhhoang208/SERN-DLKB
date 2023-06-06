@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import Form from '../../components/Form';
-import myAxios from '../../utils/myAxios';
+
 import { useNavigate } from 'react-router-dom';
+import Form from '../../../../../components/Form';
+import myAxios from '../../../../../utils/myAxios';
 
 const Login: React.FC = (): JSX.Element => {
 	const [messageError, setMessageError] = useState<string>('');
