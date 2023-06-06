@@ -21,7 +21,11 @@ const TableUsers: React.FC<iTableUsersProps> = ({
 	children,
 }: iTableUsersProps): JSX.Element => {
 	if (!users || users.length === 0) {
-		return <Loading />;
+		return (
+			<div className=' absolute w-full left-0 top-0'>
+				<Loading />
+			</div>
+		);
 	}
 	return (
 		<div className='flex flex-col'>

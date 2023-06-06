@@ -36,13 +36,15 @@ exports.default = {
                 andress: {
                     type: Sequelize.STRING,
                 },
+                // 0 - male
+                // 1 - female
                 gender: {
                     type: Sequelize.BOOLEAN,
                 },
                 roleId: {
                     type: Sequelize.STRING,
                 },
-                phonenumber: {
+                phoneNumber: {
                     type: Sequelize.STRING,
                 },
                 positionId: {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { iUser } from './TableUsers';
+import { useNavigate } from 'react-router-dom';
 
 interface iRowUser {
 	user: iUser;
@@ -10,8 +11,10 @@ const RowUser: React.FC<iRowUser> = ({
 	user,
 	children,
 }: iRowUser): JSX.Element => {
+	const navigate = useNavigate();
 	const handleEditUser = () => {
-		console.log(user.id);
+		localStorage.setItem('userUpdate', JSON.stringify(user));
+		navigate(`/system/update-user/${user.id}`);
 	};
 	const handleRemoveUser = () => {
 		console.log(user.id);

@@ -59,7 +59,7 @@ const Register: React.FC = (): JSX.Element => {
 					],
 				},
 				{
-					name: 'phonenumber',
+					name: 'phoneNumber',
 					type: 'text',
 				},
 			]}

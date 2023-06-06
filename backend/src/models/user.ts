@@ -35,7 +35,7 @@ module.exports = (sequelize: Sequelize, DataTypes: any): object => {
 			image: DataTypes.STRING,
 			roleId: DataTypes.STRING,
 			positionId: DataTypes.STRING,
-			phonenumber: DataTypes.STRING,
+			phoneNumber: DataTypes.STRING,
 		},
 		{
 			sequelize,

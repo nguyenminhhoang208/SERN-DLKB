@@ -13,16 +13,15 @@ const App: React.FC = (): JSX.Element => {
 				<Router>
 					<Routes>
 						{publicRoutes.map((route: iRoute, index: number): JSX.Element => {
-							const Layout: React.FC | any = route.layout;
 							const Page: React.FC = route.component;
 							return (
 								<Route
 									key={index}
 									path={route.path}
 									element={
-										<Layout>
+										<DefaultLayout noFooter={route.noFooter ? true : false}>
 											<Page />
-										</Layout>
+										</DefaultLayout>
 									}
 								/>
 							);
@@ -30,7 +29,7 @@ const App: React.FC = (): JSX.Element => {
 						<Route
 							path='*'
 							element={
-								<DefaultLayout>
+								<DefaultLayout noFooter={true}>
 									<NotFound />
 								</DefaultLayout>
 							}

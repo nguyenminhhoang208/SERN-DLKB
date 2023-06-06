@@ -1,40 +1,41 @@
 import React from 'react';
-import DefaultLayout from '../layouts/Site/DefaultLayout';
-import NoFooterLayout from '../layouts/Site/NoFooterLayout';
-import AdminLayout from '../layouts/System/AdminLayout';
-// import AllUsers from '../pages/System/AllUsers';
 
 const Login = React.lazy(() => import('../pages/Site/Login'));
 const Register = React.lazy(() => import('../pages/Site/Register'));
 const Home = React.lazy(() => import('../pages/Site/Home'));
 const AllUsers = React.lazy(() => import('../pages/System/AllUsers'));
+const UpdateUser = React.lazy(() => import('../pages/System/UpdateUser'));
 
 export interface iRoute {
 	path: string;
 	component: React.FC;
-	layout: React.FC;
+	noFooter?: boolean;
 }
 
 export const publicRoutes: iRoute[] = [
 	{
 		path: '/',
 		component: Home,
-		layout: DefaultLayout,
 	},
 	{
 		path: '/login',
 		component: Login,
-		layout: NoFooterLayout,
+		noFooter: true,
 	},
 	{
 		path: '/register',
 		component: Register,
-		layout: NoFooterLayout,
+		noFooter: true,
 	},
 	{
 		path: '/system/all-users',
 		component: AllUsers,
-		layout: AdminLayout,
+		noFooter: true,
+	},
+	{
+		path: '/system/update-user/:id',
+		component: UpdateUser,
+		noFooter: true,
 	},
 ];
 
