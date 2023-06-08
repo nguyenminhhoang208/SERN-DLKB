@@ -1,13 +1,13 @@
 import React from 'react';
 
 const Login = React.lazy(
-	() => import('../features/site.features/pages/components/Site/Login')
+	() => import('../features/site.features/pages/Site/Login')
 );
 const Register = React.lazy(
-	() => import('../features/site.features/pages/components/Site/Register')
+	() => import('../features/site.features/pages/Site/Register')
 );
 const Home = React.lazy(
-	() => import('../features/site.features/pages/components/Site/Home')
+	() => import('../features/site.features/pages/Site/Home')
 );
 const AllUsers = React.lazy(
 	() => import('../features/system.features/pages/AllUsers')

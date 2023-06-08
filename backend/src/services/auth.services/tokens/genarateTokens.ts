@@ -6,7 +6,7 @@ interface iData {
 	firstName: string;
 	lastName: string;
 	phoneNumber: string;
-	roleId: string;
+	role: string;
 }
 interface iKeys {
 	publicKey: string;

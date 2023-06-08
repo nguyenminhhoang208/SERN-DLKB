@@ -32,7 +32,7 @@ const loginService = async (data: iData) => {
 		email: user.email,
 		firstName: user.firstName,
 		lastName: user.lastName,
-		roleId: user.roleId,
+		role: user.role,
 		phoneNumber: user.phoneNumber,
 	};
 

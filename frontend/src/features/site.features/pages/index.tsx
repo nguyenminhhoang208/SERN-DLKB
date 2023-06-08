@@ -1,2 +1,2 @@
-import { Home, Login, NotFound, Register } from './components/Site';
+import { Home, Login, NotFound, Register } from './Site';
 export { Register, Login, NotFound, Home };

@@ -10,6 +10,7 @@ const getAllUserService = async (): Promise<any> => {
 			'phoneNumber',
 			'andress',
 			'gender',
+			'role',
 		],
 	});
 	return allUser;

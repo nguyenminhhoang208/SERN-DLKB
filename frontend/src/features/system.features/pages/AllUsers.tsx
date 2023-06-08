@@ -15,7 +15,8 @@ const AllUsers: React.FC = (): JSX.Element => {
 		})();
 	}, []);
 	return (
-		<div>
+		<div className='pt-[8vh]'>
+			<h1 className='text-3xl text-center py-9 font-bold '>Manage Accounts</h1>
 			<TableUsers users={users} />
 		</div>
 	);

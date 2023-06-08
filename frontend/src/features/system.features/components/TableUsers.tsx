@@ -1,5 +1,5 @@
 import React from 'react';
-import Loading from '../../site.features/pages/components/Loading';
+import Loading from '../../site.features/pages/Loading';
 import RowUser from './RowUser';
 
 export interface iUser {
@@ -34,7 +34,7 @@ const TableUsers: React.FC<iTableUsersProps> = ({
 				<div className='inline-block min-w-full py-2 sm:px-6 lg:px-8'>
 					<div className='overflow-hidden'>
 						<table className='min-w-full text-left text-sm font-light'>
-							<thead className='border-b font-medium dark:border-neutral-500'>
+							<thead className=' font-medium dark:border-neutral-500 bg-green-500 text-white'>
 								<tr>
 									<th scope='col' className='px-6 py-4'>
 										#
@@ -49,21 +49,18 @@ const TableUsers: React.FC<iTableUsersProps> = ({
 										);
 									})}
 									<th scope='col' className='px-6 py-4'>
-										Button
+										Actions
 									</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody className='[&>*:nth-child(2n)]:bg-green-50'>
 								{users.map((user, index) => {
 									return (
-										<tr
-											key={index}
-											className='border-b dark:border-neutral-500'
-										>
+										<tr key={index}>
 											<td className='whitespace-nowrap px-6 py-4 font-medium'>
 												{index + 1}
 											</td>
-											<RowUser key={index} user={user} />;
+											<RowUser key={index} user={user} />
 										</tr>
 									);
 								})}

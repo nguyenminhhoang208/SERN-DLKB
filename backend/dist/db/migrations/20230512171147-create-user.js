@@ -41,7 +41,7 @@ exports.default = {
                 gender: {
                     type: Sequelize.STRING,
                 },
-                roleId: {
+                role: {
                     type: Sequelize.STRING,
                 },
                 phoneNumber: {

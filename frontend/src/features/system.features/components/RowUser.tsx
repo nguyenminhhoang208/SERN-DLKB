@@ -32,13 +32,13 @@ const RowUser: React.FC<iRowUser> = ({
 			<td className='whitespace-nowrap px-6 py-4 '>
 				<button
 					onClick={handleEditUser}
-					className='mr-3 bg-transparent hover:bg-slate-300 text-slate-500 font-semibold hover:text-white py-2 px-4 border border-slate-300 hover:border-transparent rounded'
+					className='mr-3 bg-white hover:bg-yellow-400 text-slate-500 font-semibold hover:text-white py-2 px-4 border border-slate-300 hover:border-transparent rounded'
 				>
 					Edit
 				</button>
 				<button
 					onClick={handleRemoveUser}
-					className='bg-transparent hover:bg-slate-300 text-slate-500 font-semibold hover:text-white py-2 px-4 border border-slate-300 hover:border-transparent rounded'
+					className='bg-white hover:bg-red-500 text-slate-500 font-semibold hover:text-white py-2 px-4 border border-slate-300 hover:border-transparent rounded'
 				>
 					Remove
 				</button>

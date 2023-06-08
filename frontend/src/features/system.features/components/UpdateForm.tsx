@@ -48,7 +48,6 @@ const UpdateForm: React.FC<iProps> = ({
 
 			await myAxios.patch('/users/' + user.id, dataUpdate);
 			alert('Update Successfully!');
-
 			navigate('/system/all-users');
 		} catch (error: any) {
 			setMessage(error.response.data.message);
@@ -79,6 +78,10 @@ const UpdateForm: React.FC<iProps> = ({
 					type: 'text',
 				},
 				{
+					name: 'phoneNumber',
+					type: 'text',
+				},
+				{
 					name: 'gender',
 					type: 'select',
 					selectOptions: [
@@ -93,8 +96,18 @@ const UpdateForm: React.FC<iProps> = ({
 					],
 				},
 				{
-					name: 'phoneNumber',
-					type: 'text',
+					name: 'role',
+					type: 'select',
+					selectOptions: [
+						{
+							key: 'Customer',
+							value: 'Customer',
+						},
+						{
+							key: 'Doctor',
+							value: 'Doctor',
+						},
+					],
 				},
 			]}
 		/>

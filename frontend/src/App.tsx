@@ -3,12 +3,12 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { iRoute, publicRoutes } from './routes';
 import DefaultLayout from './features/site.features/layouts/DefaultLayout';
-import { NotFound } from './features/site.features/pages/components/Site';
-import Loading from './features/site.features/pages/components/Loading';
+import { NotFound } from './features/site.features/pages/Site';
+import Loading from './features/site.features/pages/Loading';
 
 const App: React.FC = (): JSX.Element => {
 	return (
-		<div className='App'>
+		<div className='App relative'>
 			<Suspense fallback={<Loading />}>
 				<Router>
 					<Routes>
