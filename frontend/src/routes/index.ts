@@ -16,37 +16,59 @@ const UpdateUser = React.lazy(
 	() => import('../features/system.features/pages/UpdateUser')
 );
 
-export interface iRoute {
+interface iValue {
 	path: string;
 	component: React.FC;
 	noFooter?: boolean;
 }
 
+export interface iRoute {
+	name: string;
+	value: iValue;
+}
+
 export const publicRoutes: iRoute[] = [
 	{
-		path: '/',
-		component: Home,
+		name: 'home',
+		value: {
+			path: '/',
+			component: Home,
+		},
+	},
+
+	{
+		name: 'login',
+		value: {
+			path: '/login',
+			component: Login,
+			noFooter: true,
+		},
 	},
 	{
-		path: '/login',
-		component: Login,
-		noFooter: true,
-	},
-	{
-		path: '/register',
-		component: Register,
-		noFooter: true,
-	},
-	{
-		path: '/system/all-users',
-		component: AllUsers,
-		noFooter: true,
-	},
-	{
-		path: '/system/update-user/:id',
-		component: UpdateUser,
-		noFooter: true,
+		name: 'register',
+		value: {
+			path: '/register',
+			component: Register,
+			noFooter: true,
+		},
 	},
 ];
 
-export const privateRoutes: iRoute[] = [];
+export const privateRoutes: iRoute[] = [
+	{
+		name: 'systemAllUsers',
+		value: {
+			path: '/system/all-users',
+			component: AllUsers,
+			noFooter: true,
+		},
+	},
+	{
+		name: 'systemUpdateUsers',
+		value: {
+			path: '/system/update-user/:id',
+			component: UpdateUser,
+			noFooter: true,
+		},
+	},
+];

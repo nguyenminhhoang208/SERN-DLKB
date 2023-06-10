@@ -1,16 +1,13 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
-import img from '../../../../assets/img/bookingcare-main-image.jpg';
-import icons from '../../../../assets/img/icons';
+import img from '../../../../../../assets/img/bookingcare-main-image.jpg';
+import icons from '../../../../../../assets/img/icons';
 import { Link } from 'react-router-dom';
 
-const Home: React.FC = (): JSX.Element => {
-	// handle icons
-
+const MainHomePage: React.FC = (): JSX.Element => {
 	const keys: string[] = Object.keys(icons);
-
 	return (
-		<>
+		<div>
 			<div className=' relative w-full h-[100vh] overflow-hidden '>
 				<div className='absolute w-full  text-center px-20 py-40 z-10 flex items-center flex-col'>
 					<h2
@@ -60,7 +57,6 @@ const Home: React.FC = (): JSX.Element => {
 									},
 									''
 								);
-							console.log(name);
 
 							return (
 								<li className=' flex p-4 justify-center text-center '>
@@ -90,8 +86,8 @@ const Home: React.FC = (): JSX.Element => {
 				<div className=' absolute w-full h-full bg-gradient-to-t from-mainColor to-transparent opacity-30 '></div>
 				<img src={img} alt='bookingcare-main-image' />
 			</div>
-		</>
+		</div>
 	);
 };
 
-export default Home;
+export default MainHomePage;
