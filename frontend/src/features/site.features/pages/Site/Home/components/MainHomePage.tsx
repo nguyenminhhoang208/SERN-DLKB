@@ -3,6 +3,8 @@ import { FaSearch } from 'react-icons/fa';
 import img from '../../../../../../assets/img/bookingcare-main-image.jpg';
 import icons from '../../../../../../assets/img/icons';
 import { Link } from 'react-router-dom';
+// import LazyLoad from 'react-lazyload';
+import LoadingInside from '../../../../../../components/LoadingInside';
 
 const MainHomePage: React.FC = (): JSX.Element => {
 	const keys: string[] = Object.keys(icons);
@@ -40,7 +42,6 @@ const MainHomePage: React.FC = (): JSX.Element => {
 				</div>
 				<div className=' absolute  right-[50%] left-[50%] translate-x-[-50%] bottom-0 container z-10'>
 					<ul className='w-full  py-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-6 grid xl:grid-cols-9 gap-x-4 gap-y-4 '>
-						{' '}
 						{keys.map((key: string): JSX.Element => {
 							const name = key
 								.match(/[a-z]+|[A-Z][a-z]*/g)
@@ -84,7 +85,9 @@ const MainHomePage: React.FC = (): JSX.Element => {
 				</div>
 
 				<div className=' absolute w-full h-full bg-gradient-to-t from-mainColor to-transparent opacity-30 '></div>
+				{/* <LazyLoad placeholder={<LoadingInside />}> */}
 				<img src={img} alt='bookingcare-main-image' />
+				{/* </LazyLoad> */}
 			</div>
 		</div>
 	);

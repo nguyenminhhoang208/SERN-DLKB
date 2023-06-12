@@ -1,10 +1,12 @@
 import React from 'react';
+import LazyLoad from 'react-lazyload';
 
 import { FaCamera } from 'react-icons/fa';
 import imgDesc from '../../../../../../assets/img/descriptions';
 import logobv from '../../../../../../assets/img/logobv';
 import imgBsnb from '../../../../../../assets/img/bacsi';
 import imgCamNang from '../../../../../../assets/img/camnang';
+// import LoadingInside from '../../../../../../components/LoadingInside';
 const RowSlide = React.lazy(() => import('../../../components/RowSlide'));
 
 const models = [
@@ -256,8 +258,9 @@ const rows = [
 const SliderHomePage: React.FC = (): JSX.Element => {
 	return (
 		<>
-			{rows.map((row: any): JSX.Element => {
+			{rows.map((row: any, index: number): JSX.Element => {
 				return (
+					// <LazyLoad key={index} placeholder={<LoadingInside />}>
 					<div className='w-full flex justify-center pb-10 px-2'>
 						<RowSlide
 							data={row.data}
@@ -267,6 +270,7 @@ const SliderHomePage: React.FC = (): JSX.Element => {
 							more={row.more}
 						/>
 					</div>
+					// </LazyLoad>
 				);
 			})}
 		</>

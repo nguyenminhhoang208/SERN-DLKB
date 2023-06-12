@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import myAxios from '../../../../utils/myAxios';
 import Form from '../../../../components/Form';
+import { publicRoutes } from '../../../../routes';
 
 const Register: React.FC = (): JSX.Element => {
 	const fields = [
@@ -77,7 +78,7 @@ const Register: React.FC = (): JSX.Element => {
 			});
 			await myAxios.post('/register', data);
 			// console.log(data);
-			navigate('/login');
+			navigate(publicRoutes.home);
 		} catch (error: any) {
 			setMessage(error.response.data.message);
 		}

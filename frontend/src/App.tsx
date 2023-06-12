@@ -1,27 +1,34 @@
-import './App.css';
 import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { iRoute, publicRoutes } from './routes';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import './App.css';
+import { privateRoutes, publicRoutes } from './routes';
+
 import DefaultLayout from './features/site.features/layouts/DefaultLayout';
-import { NotFound } from './features/site.features/pages/Site';
 import Loading from './features/site.features/pages/Loading';
+import { NotFound } from './features/site.features/pages/Site';
+
+const isAdmin = false;
 
 const App: React.FC = (): JSX.Element => {
+	const routesArr = isAdmin
+		? Object.keys(privateRoutes)
+		: Object.keys(publicRoutes);
+	const routes = isAdmin ? privateRoutes : publicRoutes;
 	return (
 		<div className='App relative'>
 			<Suspense fallback={<Loading />}>
 				<Router>
 					<Routes>
-						{publicRoutes.map((route: iRoute, index: number): JSX.Element => {
-							const Page: React.FC = route.value.component;
+						{routesArr.map((route: any, index: number): JSX.Element => {
+							const Page: React.FC = routes[route].component;
+							const path: string = routes[route].path;
+							const noFooter: boolean = !!routes[route].noFooter;
 							return (
 								<Route
 									key={index}
-									path={route.value.path}
+									path={path}
 									element={
-										<DefaultLayout
-											noFooter={route.value.noFooter ? true : false}
-										>
+										<DefaultLayout noFooter={noFooter}>
 											<Page />
 										</DefaultLayout>
 									}
@@ -31,7 +38,7 @@ const App: React.FC = (): JSX.Element => {
 						<Route
 							path='*'
 							element={
-								<DefaultLayout noFooter={true}>
+								<DefaultLayout noFooter>
 									<NotFound />
 								</DefaultLayout>
 							}

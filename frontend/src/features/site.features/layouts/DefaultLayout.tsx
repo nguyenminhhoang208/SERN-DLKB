@@ -30,11 +30,7 @@ const DefaultLayout: React.FC<any> = ({
 			</main>
 			{!noFooter ? (
 				<footer>
-					<div className='w-full bg-mainColor min-h-[8vh] flex justify-center items-center '>
-						<div className='container flex  items-center text-white font-semibold'>
-							<Footer />
-						</div>
-					</div>
+					<Footer />
 				</footer>
 			) : undefined}
 		</>

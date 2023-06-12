@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import Form from '../../../../components/Form';
@@ -7,7 +7,7 @@ import myAxios from '../../../../utils/myAxios';
 const Login: React.FC = (): JSX.Element => {
 	const [messageError, setMessageError] = useState<string>('');
 	const navigate = useNavigate();
-	const handleSubmit = async (e: React.FormEvent, data: any) => {
+	const handleSubmit = useCallback(async (e: React.FormEvent, data: any) => {
 		e.preventDefault();
 		let res: any;
 		await setTimeout(async () => {
@@ -16,10 +16,11 @@ const Login: React.FC = (): JSX.Element => {
 				console.log(res);
 				navigate('/');
 			} catch (error: any) {
-				setMessageError(error.response.data.message);
+				setMessageError(error?.response?.data?.message);
 			}
 		}, 500);
-	};
+	}, []);
+
 	return (
 		<div className='mt-[18vh]'>
 			<Form
