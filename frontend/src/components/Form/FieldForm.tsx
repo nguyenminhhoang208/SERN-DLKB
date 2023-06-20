@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaCircleNotch } from 'react-icons/fa';
+
 export interface iFieldForm {
+	fieldName: string;
 	name: string;
 	type: string;
 	selectOptions?: any;
@@ -9,6 +11,7 @@ export interface iFieldForm {
 	data?: any;
 }
 const FieldForm: React.FC<iFieldForm> = ({
+	fieldName,
 	name,
 	type,
 	dataForm,
@@ -41,7 +44,7 @@ const FieldForm: React.FC<iFieldForm> = ({
 
 	// Handle verify value
 	const handleValue = (data: string): any => {
-		const nameLC = nameDisplay.toLocaleLowerCase();
+		const nameLC = nameDisplay.toLowerCase();
 		// Special characters
 		let format = /[!#@$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 
@@ -55,9 +58,9 @@ const FieldForm: React.FC<iFieldForm> = ({
 			return setErr('Password must be at least 6 characters!');
 		}
 		// check genner
-		if (name === 'gender' && data !== 'Female' && data !== 'Male') {
-			return setErr('Your ' + nameLC + ' is not valid!');
-		}
+		// if (name === 'gender' && data !== 'Female' && data !== 'Male') {
+		// 	return setErr('Your ' + nameLC + ' is not valid!');
+		// }
 
 		// check email
 		if (
@@ -74,6 +77,7 @@ const FieldForm: React.FC<iFieldForm> = ({
 
 		// check re-password
 		dataForm[name] = value;
+
 		if (
 			name === 'rePassword' &&
 			dataForm.rePassword &&
@@ -105,7 +109,7 @@ const FieldForm: React.FC<iFieldForm> = ({
 				clearTimeout(delay);
 			};
 		}
-	}, [value || touched]);
+	}, [value, touched]);
 
 	return (
 		<div className='min-h-[95px] w-full sm:min-w-[280px]'>
@@ -113,23 +117,20 @@ const FieldForm: React.FC<iFieldForm> = ({
 				className='block text-gray-700 text-sm font-bold mb-2'
 				htmlFor={name}
 			>
-				{nameDisplay.charAt(0).toUpperCase() + nameDisplay.slice(1)}
+				{fieldName}
 			</label>
 			<div className=' relative'>
 				{type !== 'select' ? (
 					<input
 						value={value}
 						className={`shadow appearance-none border ${
-							touched
-								? err === 'success'
-									? 'border-green-300'
-									: 'border-red-500'
-								: undefined
+							touched &&
+							(err === 'success' ? 'border-green-300' : 'border-red-500')
 						} rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-blue-300  focus:outline-none focus:shadow-outline`}
 						id={name}
 						type={type}
 						name={name}
-						placeholder={'Enter your ' + nameDisplay}
+						placeholder={'Enter your ' + nameDisplay.toLowerCase()}
 						onChange={(e) => {
 							setValue(e.target.value);
 							setTouched((prev) => ++prev);
@@ -146,28 +147,29 @@ const FieldForm: React.FC<iFieldForm> = ({
 						}}
 						required
 						className={`shadow appearance-none border ${
-							touched
-								? err === 'success'
-									? 'border-green-300'
-									: 'border-red-500'
-								: undefined
+							touched &&
+							(err === 'success' ? 'border-green-300' : 'border-red-500')
 						} rounded w-full py-2 px-3 text-gray-700 leading-tight focus:border-blue-300  focus:outline-none focus:shadow-outline`}
 					>
 						{selectOptions.map((option: any) => {
-							return option.value === data ? (
-								<option key={option.value} value={option.value} selected>
-									{option.key}
+							return option.key === data ? (
+								<option
+									key={option.key}
+									value={option.key}
+									defaultValue={option.key}
+								>
+									{option.value}
 								</option>
 							) : (
-								<option key={option.value} value={option.value}>
-									{option.key}
+								<option key={option.key} value={option.key}>
+									{option.value}
 								</option>
 							);
 						})}
 					</select>
 				)}
 				<div className=' absolute top-[50%] translate-y-[-50%] right-3 opacity-40 '>
-					{checking ? <FaCircleNotch className='animate-spin' /> : undefined}
+					{checking && <FaCircleNotch className='animate-spin' />}
 				</div>
 			</div>
 			<p

@@ -3,8 +3,8 @@ import './styles.css';
 
 const Loading: React.FC = (): JSX.Element => {
 	return (
-		<div className='w-full h-screen flex justify-center items-center bg-slate-300'>
-			<span className='loader'></span>
+		<div className='w-full h-screen flex justify-center items-center bg-sky-300'>
+			<span className='loader drop-shadow '></span>
 		</div>
 	);
 };

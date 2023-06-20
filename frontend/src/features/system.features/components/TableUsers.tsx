@@ -1,5 +1,5 @@
 import React from 'react';
-import Loading from '../../site.features/pages/Loading';
+import LoadingInside from '../../../components/LoadingInside';
 import RowUser from './RowUser';
 
 export interface iUser {
@@ -24,13 +24,13 @@ const TableUsers: React.FC<iTableUsersProps> = ({
 	if (!users || users.length === 0) {
 		return (
 			<div className=' absolute w-full left-0 top-0'>
-				<Loading />
+				<LoadingInside />
 			</div>
 		);
 	}
 	return (
-		<div className='flex flex-col'>
-			<div className='overflow-x-auto sm:-mx-6 lg:-mx-8'>
+		<div className='flex w-full flex-col  '>
+			<div className='sm:mx-6  lg:mx-8'>
 				<div className='inline-block min-w-full py-2 sm:px-6 lg:px-8'>
 					<div className='overflow-hidden'>
 						<table className='min-w-full text-left text-sm font-light'>

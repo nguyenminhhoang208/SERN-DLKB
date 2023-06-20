@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import UpdateForm from '../components/UpdateForm';
-import { iUser } from '../components/TableUsers';
+import UpdateForm from '../../components/UpdateForm';
+import { iUser } from '../../components/TableUsers';
 
 const UpdateUser: React.FC = (): JSX.Element => {
 	useEffect(() => {
@@ -17,9 +17,9 @@ const UpdateUser: React.FC = (): JSX.Element => {
 	// console.log('check user', user);
 
 	return (
-		<div>
+		<>
 			<UpdateForm user={user} />
-		</div>
+		</>
 	);
 };
 

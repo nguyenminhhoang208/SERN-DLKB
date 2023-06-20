@@ -1,6 +1,7 @@
 import React from 'react';
-import { iUser } from './TableUsers';
-import { useNavigate } from 'react-router-dom';
+import {iUser} from './TableUsers';
+import {useNavigate} from 'react-router-dom';
+import {privateRoutes} from '../../../routes';
 
 interface iRowUser {
 	user: iUser;
@@ -14,7 +15,8 @@ const RowUser: React.FC<iRowUser> = ({
 	const navigate = useNavigate();
 	const handleEditUser = () => {
 		localStorage.setItem('userUpdate', JSON.stringify(user));
-		navigate(`/system/update-user/${user.id}`);
+
+		navigate(privateRoutes.systemUpdateUser.path.replace(':id', '') + user.id);
 	};
 	const handleRemoveUser = () => {
 		console.log(user.id);

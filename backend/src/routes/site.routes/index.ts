@@ -5,6 +5,8 @@ const router: express.Router = express.Router();
 
 router.post('/register', asyncHandler(siteController.register));
 router.post('/login', asyncHandler(siteController.login));
+
+router.post('/all-codes', asyncHandler(siteController.getAllCodes));
 router.get('/', asyncHandler(siteController.home));
 
 export default router;

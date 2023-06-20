@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import ModelSlide from './ModelSlide';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 interface iProps {
 	data: object[] | any;
@@ -18,6 +19,8 @@ const RowSlide: React.FC<any> = ({
 	auto = false,
 	person = false,
 }: iProps): JSX.Element => {
+	const user = useSelector((state: any) => state.authenSlice);
+	const isAdmin: boolean = user?.role === 'R1';
 	const slideRef: any = useRef(null);
 	const nextSlide = useCallback((number: number) => {
 		const slideELement = slideRef.current;
@@ -32,6 +35,9 @@ const RowSlide: React.FC<any> = ({
 			slideELement.scrollLeft += scrollWidth;
 		}
 	}, []);
+	const handleUpdatePost = () => {
+		console.log(123);
+	};
 	useEffect(() => {
 		if (auto) {
 			const sliderElement = slideRef.current;
@@ -60,21 +66,34 @@ const RowSlide: React.FC<any> = ({
 		<>
 			{data ? (
 				<div className='container relative'>
-					{title ? (
+					{title && (
 						<div className='w-full py-4 px-5 flex justify-between '>
 							<h1 className='text-2xl font-medium'>{title}</h1>
-							{more ? (
-								<Link to={more}>
-									<div className='py-2 px-3 bg-gray-200 rounded-md hover:bg-mainColor transition-all group'>
-										<p className='text-sm font-medium transition-all   group-hover:text-white '>
-											Xem thêm
+							<span className=' [&>*:nth-child(n-1)]:mr-2'>
+								{isAdmin && (
+									<div
+										onClick={handleUpdatePost}
+										className=' cu cursor-pointer inline-block py-2 px-3 bg-gray-100 text-gray-600 rounded-md hover:bg-mainColor transition-all group'
+									>
+										<p className='text-sm font-normal transition-all   group-hover:text-white '>
+											Cập nhật
 										</p>
 									</div>
-								</Link>
-							) : undefined}
+								)}
+
+								{more && (
+									<Link to={more}>
+										<div className='inline-block py-2 px-3 bg-gray-100 text-gray-600 rounded-md hover:bg-mainColor transition-all group'>
+											<p className='text-sm font-normal transition-all   group-hover:text-white '>
+												Xem thêm
+											</p>
+										</div>
+									</Link>
+								)}
+							</span>
 						</div>
-					) : undefined}
-					{auto ? undefined : (
+					)}
+					{!auto && (
 						<div
 							onClick={() => {
 								nextSlide(-1);
@@ -103,7 +122,7 @@ const RowSlide: React.FC<any> = ({
 							);
 						})}
 					</div>
-					{auto ? undefined : (
+					{!auto && (
 						<div
 							onClick={() => {
 								nextSlide(1);

@@ -1,8 +1,10 @@
+// @ts-ignore
 import express from 'express';
 import HomeService from '../services/site.services/home.service';
 import { createUserService } from '../services/crud.services';
 import { OK } from '../utils/response.utils';
 import loginService from '../services/site.services/login.service';
+import getCodesService from '../services/site.services/getCodes.service';
 
 class Site {
 	home = async (
@@ -30,6 +32,14 @@ class Site {
 		next: express.NextFunction
 	): Promise<void> => {
 		new OK('Login Successfully!', await loginService(req.body)).send(res);
+	};
+
+	getAllCodes = async (
+		req: express.Request,
+		res: express.Response,
+		next: express.NextFunction
+	): Promise<void> => {
+		new OK('Successfully!', await getCodesService(req.body)).send(res);
 	};
 }
 

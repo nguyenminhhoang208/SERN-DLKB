@@ -1,15 +1,14 @@
 import React from 'react';
-import { FaSearch } from 'react-icons/fa';
+import {FaSearch} from 'react-icons/fa';
 import img from '../../../../../../assets/img/bookingcare-main-image.jpg';
 import icons from '../../../../../../assets/img/icons';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 // import LazyLoad from 'react-lazyload';
-import LoadingInside from '../../../../../../components/LoadingInside';
 
 const MainHomePage: React.FC = (): JSX.Element => {
 	const keys: string[] = Object.keys(icons);
 	return (
-		<div>
+		<>
 			<div className=' relative w-full h-[100vh] overflow-hidden '>
 				<div className='absolute w-full  text-center px-20 py-40 z-10 flex items-center flex-col'>
 					<h2
@@ -41,8 +40,8 @@ const MainHomePage: React.FC = (): JSX.Element => {
 					</div>
 				</div>
 				<div className=' absolute  right-[50%] left-[50%] translate-x-[-50%] bottom-0 container z-10'>
-					<ul className='w-full  py-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-6 grid xl:grid-cols-9 gap-x-4 gap-y-4 '>
-						{keys.map((key: string): JSX.Element => {
+					<ul className='w-full  py-4 grid-cols-2 md:grid-cols-6  lg:grid-cols-9 grid  gap-x-4 gap-y-4 '>
+						{keys.map((key: string, index: number): JSX.Element => {
 							const name = key
 								.match(/[a-z]+|[A-Z][a-z]*/g)
 								?.reduce(
@@ -60,7 +59,10 @@ const MainHomePage: React.FC = (): JSX.Element => {
 								);
 
 							return (
-								<li className=' flex p-4 justify-center text-center '>
+								<li
+									key={index}
+									className=' flex p-4 justify-center text-center '
+								>
 									<Link to='/'>
 										<div className='w-[56px] p-3 bg-white rounded-[50%] inline-block group'>
 											<img
@@ -89,7 +91,7 @@ const MainHomePage: React.FC = (): JSX.Element => {
 				<img src={img} alt='bookingcare-main-image' />
 				{/* </LazyLoad> */}
 			</div>
-		</div>
+		</>
 	);
 };
 

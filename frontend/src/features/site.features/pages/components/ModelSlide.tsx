@@ -1,7 +1,7 @@
-import React, { memo } from 'react';
+import React, {memo} from 'react';
 // import img from '../../../../assets/img/bookingcare-main-image.jpg';
 import imgDefault from '../../../../assets/img/bookingcare-main-image.jpg';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 interface iProps {
 	title: string;
@@ -31,21 +31,21 @@ const ModelSlide = ({
 								src={img ? img : imgDefault}
 								alt='img'
 							/>
-							{banner ? (
+							{banner && (
 								<div className=' absolute top-[5%] left-[5%] px-2 py-1 bg-yellow-300 text-sm font-medium text-center rounded-lg '>
 									{banner}
 								</div>
-							) : undefined}
+							)}
 						</div>
 						<div className='w-full text-md font-medium whitespace-normal py-2 px-1'>
-							{title ? (
+							{title && (
 								<h1 className='group-hover:text-mainColor transition-all duration-200'>
 									{title}
 								</h1>
-							) : undefined}
-							{desc ? (
+							)}
+							{desc && (
 								<p className='text-sm font-thin text-gray-500'>{desc}</p>
-							) : undefined}
+							)}
 						</div>
 					</Link>
 				</div>
@@ -60,21 +60,21 @@ const ModelSlide = ({
 									alt='img'
 								/>
 							</div>
-							{banner ? (
+							{banner && (
 								<div className=' absolute top-[5%] left-[5%] px-2 py-1 bg-yellow-300 text-sm font-medium text-center rounded-lg '>
 									{banner}
 								</div>
-							) : undefined}
+							)}
 						</div>
 						<div className='w-full text-md font-medium whitespace-normal py-2 px-1'>
-							{title ? (
+							{title && (
 								<h1 className='group-hover:text-mainColor transition-all duration-200'>
 									{title}
 								</h1>
-							) : undefined}
-							{desc ? (
+							)}
+							{desc && (
 								<p className='text-sm font-thin text-gray-500'>{desc}</p>
-							) : undefined}
+							)}
 						</div>
 					</Link>
 				</div>

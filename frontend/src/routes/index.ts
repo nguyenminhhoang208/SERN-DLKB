@@ -10,10 +10,14 @@ const Home = React.lazy(
 	() => import('../features/site.features/pages/Site/Home')
 );
 const AllUsers = React.lazy(
-	() => import('../features/system.features/pages/AllUsers')
+	() => import('../features/system.features/pages/users/AllUsers')
 );
 const UpdateUser = React.lazy(
-	() => import('../features/system.features/pages/UpdateUser')
+	() => import('../features/system.features/pages/users/UpdateUser')
+);
+
+const UpdatePost = React.lazy(
+	() => import('../features/system.features/pages/posts/UpdatePost')
 );
 
 export const publicRoutes: any = {
@@ -36,14 +40,20 @@ export const publicRoutes: any = {
 
 export const privateRoutes: any = {
 	systemAllUsers: {
-		path: '/system/all-users',
+		path: '/system/user/all-users',
 		component: AllUsers,
 		noFooter: true,
 	},
 
-	systemUpdateUsers: {
-		path: '/system/update-user/:id',
+	systemUpdateUser: {
+		path: '/system/user/update/:id',
 		component: UpdateUser,
+		noFooter: true,
+	},
+
+	systemUpdatePost: {
+		path: '/system/post/update',
+		component: UpdatePost,
 		noFooter: true,
 	},
 };

@@ -1,6 +1,6 @@
 import React from 'react';
-import { FaFacebook, FaGithub } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import {FaFacebook, FaGithub} from 'react-icons/fa';
+import {Link} from 'react-router-dom';
 import img from '../../../../assets/img/bo-cong-thuong.svg';
 
 const Footer: React.FC = (): JSX.Element => {

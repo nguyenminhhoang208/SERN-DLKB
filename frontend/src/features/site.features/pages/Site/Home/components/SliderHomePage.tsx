@@ -1,7 +1,6 @@
 import React from 'react';
-import LazyLoad from 'react-lazyload';
 
-import { FaCamera } from 'react-icons/fa';
+import {FaCamera} from 'react-icons/fa';
 import imgDesc from '../../../../../../assets/img/descriptions';
 import logobv from '../../../../../../assets/img/logobv';
 import imgBsnb from '../../../../../../assets/img/bacsi';
@@ -260,8 +259,8 @@ const SliderHomePage: React.FC = (): JSX.Element => {
 		<>
 			{rows.map((row: any, index: number): JSX.Element => {
 				return (
-					// <LazyLoad key={index} placeholder={<LoadingInside />}>
-					<div className='w-full flex justify-center pb-10 px-2'>
+					// <LazyLoad  placeholder={<LoadingInside />}>
+					<div key={index} className='w-full flex justify-center pb-10 px-2'>
 						<RowSlide
 							data={row.data}
 							title={row.title}

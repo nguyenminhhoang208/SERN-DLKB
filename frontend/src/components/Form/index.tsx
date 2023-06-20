@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import FieldForm, { iFieldForm } from './FieldForm';
-import { iUser } from '../../features/system.features/components/TableUsers';
+import React, {useState} from 'react';
+import FieldForm, {iFieldForm} from './FieldForm';
 
 interface iForm {
 	nameForm: string;
@@ -22,13 +21,13 @@ const Form = ({
 	const [dataForm, setDataForm] = useState<any>({});
 
 	return (
-		<div className='flex justify-center items-center'>
+		<div className='w-full flex justify-center items-center'>
 			<form
 				method='POST'
 				onSubmit={(e) => {
 					submit(e, dataForm);
 				}}
-				className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[95%] sm:max-w-max '
+				className='w-full bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4  sm:w-4/5 lg:max-w-max '
 			>
 				<div className='text-center font-bold text-xl mb-[5vh]'>
 					<h1>{nameForm}</h1>
@@ -48,6 +47,7 @@ const Form = ({
 								key={field.name}
 								name={field.name}
 								type={field.type}
+								fieldName={field.fieldName}
 								selectOptions={field?.selectOptions}
 								dataForm={dataForm}
 								setDataForm={setDataForm}
@@ -64,14 +64,14 @@ const Form = ({
 					>
 						{nameForm}
 					</button>
-					{authen ? (
+					{authen && (
 						<a
 							className='inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800'
 							href='/'
 						>
-							Forgot Password?
+							Quên mật khẩu?
 						</a>
-					) : undefined}
+					)}
 				</div>
 			</form>
 		</div>

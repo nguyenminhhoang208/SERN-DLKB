@@ -1,5 +1,4 @@
 import React from 'react';
-import AdminHeader from '../../system.features/header/AdminHeader';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -17,22 +16,20 @@ const DefaultLayout: React.FC<any> = ({
 			<header>
 				<div className=' fixed w-full top-0 z-20'>
 					<div className='w-full px-4 sm:px-0 bg-mainColor h-[8vh] flex justify-center items-center text-white font-semibold '>
-						<div className='container h-full flex items-center  '>
+						<div className='container h-full flex justify-between items-center  '>
 							<Header />
 						</div>
 					</div>
 				</div>
 			</header>
 			<main>
-				<div className=' flex justify-center'>
-					<div className='min-h-[84vh]'>{children}</div>
-				</div>
+				<div className=' flex justify-center flex-col'>{children}</div>
 			</main>
-			{!noFooter ? (
+			{!noFooter && (
 				<footer>
 					<Footer />
 				</footer>
-			) : undefined}
+			)}
 		</>
 	);
 };

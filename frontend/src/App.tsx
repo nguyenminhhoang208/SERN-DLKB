@@ -1,19 +1,27 @@
-import React, { Suspense } from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import React, { Suspense, useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { privateRoutes, publicRoutes } from './routes';
 
+import { useSelector } from 'react-redux';
 import DefaultLayout from './features/site.features/layouts/DefaultLayout';
 import Loading from './features/site.features/pages/Loading';
 import { NotFound } from './features/site.features/pages/Site';
-
-const isAdmin = false;
+import Logout from './features/site.features/pages/Site/Logout';
 
 const App: React.FC = (): JSX.Element => {
-	const routesArr = isAdmin
-		? Object.keys(privateRoutes)
-		: Object.keys(publicRoutes);
-	const routes = isAdmin ? privateRoutes : publicRoutes;
+	const [routes, setRoutes] = useState<any>(publicRoutes);
+	const [routesArr, setRoutesArr] = useState<any>(Object.keys(publicRoutes));
+
+	const user = useSelector((state: any) => state.authenSlice);
+	const isAdmin: boolean = user?.role === 'R1';
+	useEffect(() => {
+		if (isAdmin) {
+			setRoutes((prev: any) => ({ ...prev, ...privateRoutes }));
+			setRoutesArr((prev: any) => prev.concat(Object.keys(privateRoutes)));
+		}
+	}, []);
+
 	return (
 		<div className='App relative'>
 			<Suspense fallback={<Loading />}>
@@ -35,11 +43,13 @@ const App: React.FC = (): JSX.Element => {
 								/>
 							);
 						})}
+						<Route path='/logout' element={<Logout />} />
 						<Route
 							path='*'
 							element={
 								<DefaultLayout noFooter>
 									<NotFound />
+									{/* <Loading /> */}
 								</DefaultLayout>
 							}
 						/>

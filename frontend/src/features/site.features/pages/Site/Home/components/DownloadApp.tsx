@@ -2,8 +2,8 @@ import React from 'react';
 import imgPhone from '../../../../../../assets/img/phone.png';
 import imgCHPlay from '../../../../../../assets/img/google-play-download-android-app.png';
 import imgAppStore from '../../../../../../assets/img/app-store-badge-black.svg';
-import { FaCheck } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import {FaCheck} from 'react-icons/fa';
+import {Link} from 'react-router-dom';
 
 const DownloadApp: React.FC = (): JSX.Element => {
 	return (

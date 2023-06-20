@@ -1,18 +1,18 @@
-.loader {
+.loaderInside {
 	display: block;
-	--height-of-loader: 4px;
-	--loader-color: #0071e2;
+	--height-of-loaderInside: 4px;
+	--loaderInside-color: #0ea5e9;
 	width: 130px;
-	height: var(--height-of-loader);
+	height: var(--height-of-loaderInside);
 	border-radius: 30px;
 	background-color: rgba(0, 0, 0, 0.2);
 	position: relative;
 }
 
-.loader::before {
+.loaderInside::before {
 	content: '';
 	position: absolute;
-	background: var(--loader-color);
+	background: var(--loaderInside-color);
 	top: 0;
 	left: 0;
 	width: 0%;

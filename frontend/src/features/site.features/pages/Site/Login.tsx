@@ -1,19 +1,26 @@
-import React, { useState, useCallback } from 'react';
+import React, {useCallback, useState} from 'react';
+import {useDispatch} from 'react-redux';
 
-import { useNavigate } from 'react-router-dom';
+import {AnyAction, Dispatch} from '@reduxjs/toolkit';
+import {useNavigate} from 'react-router-dom';
 import Form from '../../../../components/Form';
 import myAxios from '../../../../utils/myAxios';
+import {login} from '../../authenSlice';
 
 const Login: React.FC = (): JSX.Element => {
 	const [messageError, setMessageError] = useState<string>('');
+
+	const dispatch: Dispatch<AnyAction> = useDispatch();
 	const navigate = useNavigate();
+
 	const handleSubmit = useCallback(async (e: React.FormEvent, data: any) => {
 		e.preventDefault();
 		let res: any;
 		await setTimeout(async () => {
 			try {
 				res = await myAxios.post('/login', data);
-				console.log(res);
+				const action = login(res.metadata);
+				dispatch(action);
 				navigate('/');
 			} catch (error: any) {
 				setMessageError(error?.response?.data?.message);
@@ -22,15 +29,18 @@ const Login: React.FC = (): JSX.Element => {
 	}, []);
 
 	return (
-		<div className='mt-[18vh]'>
+		<div className='mt-[18vh] w-full'>
 			<Form
-				nameForm='Login'
+				nameForm='Đăng nhập'
 				fields={[
 					{
+						fieldName: 'Email',
 						name: 'email',
 						type: 'email',
 					},
 					{
+						fieldName: 'Mật khẩu',
+
 						name: 'password',
 						type: 'password',
 					},

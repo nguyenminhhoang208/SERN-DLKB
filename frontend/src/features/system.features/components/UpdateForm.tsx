@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Form from '../../../components/Form';
 import myAxios from '../../../utils/myAxios';
-import { useNavigate } from 'react-router-dom';
-import { iUser } from './TableUsers';
+import {useNavigate} from 'react-router-dom';
+import {iUser} from './TableUsers';
+import getField from '../../../utils/getField';
+import {privateRoutes} from '../../../routes';
 
 interface iProps {
 	user: iUser | any;
@@ -15,6 +17,35 @@ const UpdateForm: React.FC<iProps> = ({
 }: iProps): JSX.Element => {
 	const navigate = useNavigate();
 	const [message, setMessage] = useState<string>('');
+	const [fields, setFields] = useState<any>([
+		{
+			fieldName: 'Email',
+			name: 'email',
+			type: 'email',
+		},
+
+		{
+			fieldName: 'Họ',
+			name: 'firstName',
+			type: 'text',
+		},
+		{
+			fieldName: 'Tên',
+			name: 'lastName',
+			type: 'text',
+		},
+		{
+			fieldName: 'Địa chỉ',
+
+			name: 'andress',
+			type: 'text',
+		},
+		{
+			fieldName: 'Số điện thoại',
+			name: 'phoneNumber',
+			type: 'text',
+		},
+	]);
 
 	const handleSubmit = async (e: React.FormEvent, data: any) => {
 		try {
@@ -48,69 +79,53 @@ const UpdateForm: React.FC<iProps> = ({
 
 			await myAxios.patch('/users/' + user.id, dataUpdate);
 			alert('Update Successfully!');
-			navigate('/system/all-users');
+			navigate(privateRoutes.systemAllUsers.path);
 		} catch (error: any) {
 			setMessage(error.response.data.message);
 		}
 	};
-	return (
-		<Form
-			nameForm='Update'
-			message={message}
-			submit={handleSubmit}
-			initialValue={user}
-			fields={[
-				{
-					name: 'email',
-					type: 'email',
-				},
+	useEffect(() => {
+		if (fields.length < 9) {
+			(async () => {
+				try {
+					let selectOptions = await getField('role');
 
-				{
-					name: 'firstName',
-					type: 'text',
-				},
-				{
-					name: 'lastName',
-					type: 'text',
-				},
-				{
-					name: 'andress',
-					type: 'text',
-				},
-				{
-					name: 'phoneNumber',
-					type: 'text',
-				},
-				{
-					name: 'gender',
-					type: 'select',
-					selectOptions: [
-						{
-							key: 'Male',
-							value: 'Male',
-						},
-						{
-							key: 'Female',
-							value: 'Female',
-						},
-					],
-				},
-				{
-					name: 'role',
-					type: 'select',
-					selectOptions: [
-						{
-							key: 'Customer',
-							value: 'Customer',
-						},
-						{
-							key: 'Doctor',
-							value: 'Doctor',
-						},
-					],
-				},
-			]}
-		/>
+					const fieldRoles = {
+						fieldName: 'Bạn là',
+
+						name: 'role',
+						type: 'select',
+						selectOptions,
+					};
+
+					selectOptions = await getField('gender');
+
+					const fieldGenders = {
+						fieldName: 'GIới tính',
+						name: 'gender',
+						type: 'select',
+						selectOptions,
+					};
+
+					await setFields((prev: any) => {
+						return prev.concat(fieldGenders, fieldRoles);
+					});
+				} catch (error: any) {
+					setMessage(error.response.data.message);
+				}
+			})();
+		}
+	}, []);
+	return (
+		<div className='w-full min-h-screen flex items-center pt-[15vh] md:pt-15 lg:pt-5 xl:pt-0'>
+			<Form
+				nameForm='Cập nhật'
+				message={message}
+				submit={handleSubmit}
+				initialValue={user}
+				fields={fields}
+			/>
+		</div>
 	);
 };
 
